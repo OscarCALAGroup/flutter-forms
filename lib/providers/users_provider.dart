@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:form_flutter/services/users.dart';
+import 'package:form_flutter/services/users/users_service.dart';
 
-final UsersProvider = FutureProvider((ref) async {
+final usersProvider = FutureProvider((ref) async {
+  final usersService = UsersService();
+  final users = await usersService.getUsers();
 
-  final name = UsersService.getUser(1);
-
-  return name;
+  return users;
 });
